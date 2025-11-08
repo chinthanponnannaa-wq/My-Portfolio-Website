@@ -81,27 +81,68 @@
         }
     </style>
 
+    <!-- ====== CLEAN MODULE SCRIPT (GSAP + SplitType) - same as index page ====== -->
     <script type="module">
-        import gsap from "https://cdn.skypack.dev/gsap"; import SplitType from "https://cdn.skypack.dev/split-type"; document.addEventListener("DOMContentLoaded", () => { // Create the gsap.matchMedia() instance let mm = gsap.matchMedia(); // Add a media query
-        that targets screens with a minimum width of 992px mm.add("(min-width: 992px)", () => { const fontWeightItems = document.querySelectorAll( '[data-animate="font-weight"]' ); const MAX_DISTANCE = 300; // Adjust the maximum distance for font weight
-        change as needed const MAX_FONT_WEIGHT = 800; // Maximum font weight const MIN_FONT_WEIGHT = 100; // Minimum font weight // Split up any text with the data attribute into individual characters fontWeightItems.forEach((item) => { new SplitType(item,
-        { types: "chars" }).chars; }); // Add mousemove event listener to change font weight based on mouse position document.addEventListener("mousemove", (event) => { // Get the mouse position const mouseX = event.pageX; const mouseY = event.pageY;
-        fontWeightItems.forEach((item) => { item.querySelectorAll(".char").forEach((char) => { // Get the center of each character and calculate the distance from the mouse const itemRect = char.getBoundingClientRect(); const itemCenterX = itemRect.left
-        + itemRect.width / 2 + window.scrollX; const itemCenterY = itemRect.top + itemRect.height / 2 + window.scrollY; const distance = Math.sqrt( Math.pow(mouseX - itemCenterX, 2) + Math.pow(mouseY - itemCenterY, 2) ); // map the distance to the font
-        weight range let fontWeight = distance
-        < MAX_DISTANCE ? gsap.utils.mapRange( 0, MAX_DISTANCE, MIN_FONT_WEIGHT, MAX_FONT_WEIGHT, Math.max(0, MAX_DISTANCE - distance) ) : MIN_FONT_WEIGHT; gsap.to(char, { fontWeight, duration: 0.5 }); });
-            }); }); }); }); </script>
-            <script type="text/javascript">
-                window.__WEBFLOW_CURRENCY_SETTINGS = {
-                    "currencyCode": "USD",
-                    "symbol": "$",
-                    "decimal": ".",
-                    "fractionDigits": 2,
-                    "group": ",",
-                    "template": "{{wf {\"path\":\"symbol\",\"type\":\"PlainText\"} }} {{wf {\"path\":\"amount\",\"type\":\"CommercePrice\"} }} {{wf {\"path\":\"currencyCode\",\"type\":\"PlainText\"} }}",
-                    "hideDecimalForWholeNumbers": false
-                };
-            </script>
+        import gsap from "https://cdn.skypack.dev/gsap";
+        import SplitType from "https://cdn.skypack.dev/split-type";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Create the gsap.matchMedia() instance
+            let mm = gsap.matchMedia();
+
+            // Add a media query that targets screens with a minimum width of 992px
+            mm.add("(min-width: 992px)", () => {
+                const fontWeightItems = document.querySelectorAll('[data-animate="font-weight"]');
+                const MAX_DISTANCE = 300; // Adjust the maximum distance for font weight change as needed
+                const MAX_FONT_WEIGHT = 800; // Maximum font weight
+                const MIN_FONT_WEIGHT = 100; // Minimum font weight
+
+                // Split up any text with the data attribute into individual characters
+                fontWeightItems.forEach((item) => {
+                    new SplitType(item, { types: "chars" });
+                });
+
+                // Add mousemove event listener to change font weight based on mouse position
+                document.addEventListener("mousemove", (event) => {
+                    // Get the mouse position
+                    const mouseX = event.pageX;
+                    const mouseY = event.pageY;
+
+                    fontWeightItems.forEach((item) => {
+                        item.querySelectorAll(".char").forEach((char) => {
+                            // Get the center of each character and calculate the distance from the mouse
+                            const itemRect = char.getBoundingClientRect();
+                            const itemCenterX = itemRect.left + itemRect.width / 2 + window.scrollX;
+                            const itemCenterY = itemRect.top + itemRect.height / 2 + window.scrollY;
+                            const distance = Math.sqrt(
+                                Math.pow(mouseX - itemCenterX, 2) + Math.pow(mouseY - itemCenterY, 2)
+                            );
+
+                            // Map the distance to the font weight range
+                            let fontWeight = distance < MAX_DISTANCE ? 
+                                gsap.utils.mapRange(0, MAX_DISTANCE, MIN_FONT_WEIGHT, MAX_FONT_WEIGHT, Math.max(0, MAX_DISTANCE - distance)) : 
+                                MIN_FONT_WEIGHT;
+
+                            gsap.to(char, { fontWeight, duration: 0.5 });
+                        });
+                    });
+                });
+            });
+        });
+    </script>
+    <!-- ====== END MODULE SCRIPT ====== -->
+
+    <script type="text/javascript">
+        window.__WEBFLOW_CURRENCY_SETTINGS = {
+            "currencyCode": "USD",
+            "symbol": "$",
+            "decimal": ".",
+            "fractionDigits": 2,
+            "group": ",",
+            "template": "{{wf {\"path\":\"symbol\",\"type\":\"PlainText\"} }} {{wf {\"path\":\"amount\",\"type\":\"CommercePrice\"} }} {{wf {\"path\":\"currencyCode\",\"type\":\"PlainText\"} }}",
+            "hideDecimalForWholeNumbers": false
+        };
+    </script>
 </head>
 
 <body>
@@ -183,6 +224,7 @@
                             </div>
                         </a>
                         <div class="navbar-list-divider"></div>
+                        <!-- Modified: add data-animate="font-weight" to the Contact text so the same hover effect applies -->
                         <a data-w-id="8134aa96-7957-49b3-9d5a-589e1022e9d4" href="/contact" aria-current="page" class="navbar-link w-inline-block w--current">
                             <div style="opacity:1" class="navbar-link-active-bg"></div>
                             <div class="w-layout-grid navbar-link-content">
@@ -195,7 +237,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 9v.906a2.25 2.25 0 01-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 001.183 1.981l6.478 3.488m8.839 2.51l-4.66-2.51m0 0l-1.023-.55a2.25 2.25 0 00-2.134 0l-1.022.55m0 0l-4.661 2.51m16.5 1.615a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V8.844a2.25 2.25 0 011.183-1.98l7.5-4.04a2.25 2.25 0 012.134 0l7.5 4.04a2.25 2.25 0 011.183 1.98V19.5z" />
 </svg></div>
                                 </div>
-                                <div>Contact</div>
+                                <div data-animate="font-weight">Contact</div>
                             </div>
                         </a>
                     </div>

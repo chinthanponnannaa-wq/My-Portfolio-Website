@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!-- This site was created in Webflow. https://webflow.com -->
-<!-- Last Published: Thu Sep 04 2025 15:45:33 GMT+0000 (Coordinated Universal Time) -->
 <html data-wf-domain="chinthan-ponnanna-ad.netlify.app" data-wf-page="66e2e525ff88cd2d1a4c79e6" data-wf-site="66e2e525ff88cd2d1a4c79ce" lang="en">
 
 <head>
@@ -78,27 +76,68 @@
         }
     </style>
 
+    <!-- CLEAN MODULE SCRIPT (GSAP + SplitType) — identical effect used on your other pages -->
     <script type="module">
-        import gsap from "https://cdn.skypack.dev/gsap"; import SplitType from "https://cdn.skypack.dev/split-type"; document.addEventListener("DOMContentLoaded", () => { // Create the gsap.matchMedia() instance let mm = gsap.matchMedia(); // Add a media query
-        that targets screens with a minimum width of 992px mm.add("(min-width: 992px)", () => { const fontWeightItems = document.querySelectorAll( '[data-animate="font-weight"]' ); const MAX_DISTANCE = 300; // Adjust the maximum distance for font weight
-        change as needed const MAX_FONT_WEIGHT = 800; // Maximum font weight const MIN_FONT_WEIGHT = 100; // Minimum font weight // Split up any text with the data attribute into individual characters fontWeightItems.forEach((item) => { new SplitType(item,
-        { types: "chars" }).chars; }); // Add mousemove event listener to change font weight based on mouse position document.addEventListener("mousemove", (event) => { // Get the mouse position const mouseX = event.pageX; const mouseY = event.pageY;
-        fontWeightItems.forEach((item) => { item.querySelectorAll(".char").forEach((char) => { // Get the center of each character and calculate the distance from the mouse const itemRect = char.getBoundingClientRect(); const itemCenterX = itemRect.left
-        + itemRect.width / 2 + window.scrollX; const itemCenterY = itemRect.top + itemRect.height / 2 + window.scrollY; const distance = Math.sqrt( Math.pow(mouseX - itemCenterX, 2) + Math.pow(mouseY - itemCenterY, 2) ); // map the distance to the font
-        weight range let fontWeight = distance
-        < MAX_DISTANCE ? gsap.utils.mapRange( 0, MAX_DISTANCE, MIN_FONT_WEIGHT, MAX_FONT_WEIGHT, Math.max(0, MAX_DISTANCE - distance) ) : MIN_FONT_WEIGHT; gsap.to(char, { fontWeight, duration: 0.5 }); });
-            }); }); }); }); </script>
-            <script type="text/javascript">
-                window.__WEBFLOW_CURRENCY_SETTINGS = {
-                    "currencyCode": "USD",
-                    "symbol": "$",
-                    "decimal": ".",
-                    "fractionDigits": 2,
-                    "group": ",",
-                    "template": "{{wf {\"path\":\"symbol\",\"type\":\"PlainText\"} }} {{wf {\"path\":\"amount\",\"type\":\"CommercePrice\"} }} {{wf {\"path\":\"currencyCode\",\"type\":\"PlainText\"} }}",
-                    "hideDecimalForWholeNumbers": false
-                };
-            </script>
+        import gsap from "https://cdn.skypack.dev/gsap";
+        import SplitType from "https://cdn.skypack.dev/split-type";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Create the gsap.matchMedia() instance
+            let mm = gsap.matchMedia();
+
+            // Add a media query that targets screens with a minimum width of 992px
+            mm.add("(min-width: 992px)", () => {
+                const fontWeightItems = document.querySelectorAll('[data-animate="font-weight"]');
+                const MAX_DISTANCE = 300; // Adjust the maximum distance for font weight change as needed
+                const MAX_FONT_WEIGHT = 800; // Maximum font weight
+                const MIN_FONT_WEIGHT = 100; // Minimum font weight
+
+                // Split up any text with the data attribute into individual characters
+                fontWeightItems.forEach((item) => {
+                    new SplitType(item, { types: "chars" });
+                });
+
+                // Add mousemove event listener to change font weight based on mouse position
+                document.addEventListener("mousemove", (event) => {
+                    // Get the mouse position
+                    const mouseX = event.pageX;
+                    const mouseY = event.pageY;
+
+                    fontWeightItems.forEach((item) => {
+                        item.querySelectorAll(".char").forEach((char) => {
+                            // Get the center of each character and calculate the distance from the mouse
+                            const itemRect = char.getBoundingClientRect();
+                            const itemCenterX = itemRect.left + itemRect.width / 2 + window.scrollX;
+                            const itemCenterY = itemRect.top + itemRect.height / 2 + window.scrollY;
+                            const distance = Math.sqrt(
+                                Math.pow(mouseX - itemCenterX, 2) + Math.pow(mouseY - itemCenterY, 2)
+                            );
+
+                            // Map the distance to the font weight range
+                            let fontWeight = distance < MAX_DISTANCE ? 
+                                gsap.utils.mapRange(0, MAX_DISTANCE, MIN_FONT_WEIGHT, MAX_FONT_WEIGHT, Math.max(0, MAX_DISTANCE - distance)) : 
+                                MIN_FONT_WEIGHT;
+
+                            gsap.to(char, { fontWeight, duration: 0.5 });
+                        });
+                    });
+                });
+            });
+        });
+    </script>
+    <!-- END MODULE SCRIPT -->
+
+    <script type="text/javascript">
+        window.__WEBFLOW_CURRENCY_SETTINGS = {
+            "currencyCode": "USD",
+            "symbol": "$",
+            "decimal": ".",
+            "fractionDigits": 2,
+            "group": ",",
+            "template": "{{wf {\"path\":\"symbol\",\"type\":\"PlainText\"} }} {{wf {\"path\":\"amount\",\"type\":\"CommercePrice\"} }} {{wf {\"path\":\"currencyCode\",\"type\":\"PlainText\"} }}",
+            "hideDecimalForWholeNumbers": false
+        };
+    </script>
 </head>
 
 <body>
@@ -114,8 +153,8 @@
                         <div class="sidebar-header-info">
                             <div class="sidebar-header-name">CHINTHAN A D</div>
                             <div class="sidebar-header-title">
-                            <div>Tech Innovator</div>
-                        </div>
+                                <div>Tech Innovator</div>
+                            </div>
                         </div>
                     </a>
                 </div>
@@ -241,31 +280,32 @@
                 <div class="section-block">
                     <div class="content-title-wrap">
                         <div class="content-title-dot"></div>
-                        <h2 class="content-title">Design.</h2>
-                        <div class="content-title is-text">Best designer tools</div>
+                        <h2 class="content-title">Core Programming & Database.</h2>
+                        <div class="content-title is-text">Fundamental programming languages and database technologies</div>
                     </div>
                     <div class="w-layout-grid _2x-column">
-                        <a style="background-color:rgb(28,28,28)" href="https://www.framer.com/" target="_blank" class="card w-inline-block">
+                        <a style="background-color:rgb(28,28,28)" href="https://www.python.org/" target="_blank" class="card w-inline-block">
                             <div class="shine-wrap">
                                 <div class="shine"></div>
                             </div>
                             <div class="card-content-vertical">
                                 <div class="tools">
                                     <div class="tools-head">
-                                        <div class="tools-icon"><img src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a5a_Adobe_illustrator_logo_PNG19.png" loading="lazy" alt="" class="image-background" />
+                                        <div class="tools-icon">
+                                            <div class="tool-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/800px-Python-logo-notext.svg.png" alt="Python Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;"></div>
                                             <div class="app-outline"></div>
                                         </div>
                                         <div>
-                                            <h2 class="card-heading">Adobe Illustrator</h2>
+                                            <h2 class="card-heading">Python</h2>
                                         </div>
                                     </div>
-                                    <div class="card-text-2-lines">Adobe Illustrator offers 2D or 3D graphics manipulation to increase efficiency in the design workflow.</div>
+                                    <div class="card-text-2-lines">Versatile language for AI techniques, visualizations, and debugging.</div>
                                 </div>
                                 <div class="card-meta">
                                     <div class="card-info">
-                                        <div class="card-tag">Design</div>
-                                        <div class="card-tag">No Code</div>
-                                        <div class="card-tag">Feedback</div>
+                                        <div class="card-tag">Programming</div>
+                                        <div class="card-tag">AI</div>
+                                        <div class="card-tag">Data</div>
                                     </div>
                                     <div class="card-cta">
                                         <div class="icon-svg w-embed"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -275,27 +315,27 @@
                                 </div>
                             </div>
                         </a>
-                        <a style="background-color:rgb(28,28,28)" href="https://www.readymag.com/" target="_blank" class="card w-inline-block">
+                        <a style="background-color:rgb(28,28,28)" href="https://www.mysql.com/" target="_blank" class="card w-inline-block">
                             <div class="shine-wrap">
                                 <div class="shine"></div>
                             </div>
                             <div class="card-content-vertical">
                                 <div class="tools">
                                     <div class="tools-head">
-                                        <div class="tools-icon"><img src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a10_spline-icon-filled-256.webp" loading="lazy" alt="" class="image-background" />
+                                        <div class="tools-icon">
+                                            <div class="tool-logo"><img src="https://i.imgur.com/pW0nzal.png" alt="SQL Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;"></div>
                                             <div class="app-outline"></div>
                                         </div>
                                         <div>
-                                            <h2 class="card-heading">Spline</h2>
+                                            <h2 class="card-heading">SQL</h2>
                                         </div>
                                     </div>
-                                    <div class="card-text-2-lines">Create 3D objects, edit materials, add interactivity, and export. Control the outcome of your 3d design work.</div>
+                                    <div class="card-text-2-lines">Standard database language for managing and manipulating relational databases.</div>
                                 </div>
                                 <div class="card-meta">
                                     <div class="card-info">
-                                        <div class="card-tag">Design</div>
-                                        <div class="card-tag">3D</div>
-                                        <div class="card-tag">No Code</div>
+                                        <div class="card-tag">Database</div>
+                                        <div class="card-tag">Programming</div>
                                     </div>
                                     <div class="card-cta">
                                         <div class="icon-svg w-embed"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -305,27 +345,27 @@
                                 </div>
                             </div>
                         </a>
-                        <a style="background-color:rgb(28,28,28)" href="https://www.figma.com/" target="_blank" class="card w-inline-block">
+                        <a style="background-color:rgb(28,28,28)" href="https://cplusplus.com/" target="_blank" class="card w-inline-block">
                             <div class="shine-wrap">
                                 <div class="shine"></div>
                             </div>
                             <div class="card-content-vertical">
                                 <div class="tools">
                                     <div class="tools-head">
-                                        <div class="tools-icon"><img src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a20_icon-figma.png" loading="lazy" alt="" class="image-background" />
+                                        <div class="tools-icon">
+                                            <div class="tool-logo"><img src="https://i.imgur.com/SkuXS1y.png" alt="C Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;"></div>
                                             <div class="app-outline"></div>
                                         </div>
                                         <div>
-                                            <h2 class="card-heading">Figma</h2>
+                                            <h2 class="card-heading">C</h2>
                                         </div>
                                     </div>
-                                    <div class="card-text-2-lines">Figma is a web-based interface design application to collaborate in managing design projects.</div>
+                                    <div class="card-text-2-lines">Foundational programming language often used in system and embedded development.</div>
                                 </div>
                                 <div class="card-meta">
                                     <div class="card-info">
-                                        <div class="card-tag">Design</div>
-                                        <div class="card-tag">Prototype</div>
-                                        <div class="card-tag">Feedback</div>
+                                        <div class="card-tag">Programming</div>
+                                        <div class="card-tag">Systems</div>
                                     </div>
                                     <div class="card-cta">
                                         <div class="icon-svg w-embed"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -335,28 +375,27 @@
                                 </div>
                             </div>
                         </a>
-                        <a style="background-color:rgb(28,28,28)" href="https://www.frame.io/" target="_blank" class="card w-inline-block">
+                        <a style="background-color:rgb(28,28,28)" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="card w-inline-block">
                             <div class="shine-wrap">
                                 <div class="shine"></div>
                             </div>
                             <div class="card-content-vertical">
                                 <div class="tools">
                                     <div class="tools-head">
-                                        <div class="tools-icon"><img src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a59_xd.png" loading="lazy" sizes="(max-width: 512px) 100vw, 512px" srcset="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a59_xd-p-500.png 500w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a59_xd.png 512w"
-                                                alt="" class="image-background" />
+                                        <div class="tools-icon">
+                                            <div class="tool-logo"><img src="https://i.imgur.com/x5lmQF2.png" alt="JavaScript Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;"></div>
                                             <div class="app-outline"></div>
                                         </div>
                                         <div>
-                                            <h2 class="card-heading">Adobe XD</h2>
+                                            <h2 class="card-heading">JavaScript</h2>
                                         </div>
                                     </div>
-                                    <div class="card-text-2-lines">Adobe XD is a powerful prototyping tool used to create and design user interfaces (UI) and user experiences (UX).</div>
+                                    <div class="card-text-2-lines">High-level language essential for modern web development and interactivity.</div>
                                 </div>
                                 <div class="card-meta">
                                     <div class="card-info">
-                                        <div class="card-tag">Design</div>
-                                        <div class="card-tag">Collaboration</div>
-                                        <div class="card-tag">Feedback</div>
+                                        <div class="card-tag">Programming</div>
+                                        <div class="card-tag">Web</div>
                                     </div>
                                     <div class="card-cta">
                                         <div class="icon-svg w-embed"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -372,121 +411,125 @@
                 <div class="section-block">
                     <div class="content-title-wrap">
                         <div class="content-title-dot"></div>
-                        <h2 class="content-title">Development.</h2>
-                        <div class="content-title is-text">Seamlessly integrate my engineering workflows</div>
+                        <h2 class="content-title">Engineering & Embedded Systems.</h2>
+                        <div class="content-title is-text">Specialized tools for embedded systems and engineering applications</div>
                     </div>
                     <div class="w-layout-grid _2x-column">
-                        <a style="background-color:rgb(28,28,28)" href="https://webflow.com/" target="_blank" class="card w-inline-block">
+                        <a style="background-color:rgb(28,28,28)" href="https://www.embedded.com/" target="_blank" class="card w-inline-block">
                             <div class="shine-wrap">
                                 <div class="shine"></div>
                             </div>
                             <div class="card-content-vertical">
                                 <div class="tools">
                                     <div class="tools-head">
-                                        <div class="tools-icon"><img src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a1e_webflow-icon.png" loading="lazy" alt="" class="image-background" />
+                                        <div class="tools-icon">
+                                            <div class="tool-logo"><img src="https://i.imgur.com/uLRAAGG.jpeg" alt="Embedded C Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;"></div>
                                             <div class="app-outline"></div>
                                         </div>
                                         <div>
-                                            <h2 class="card-heading">Webflow</h2>
+                                            <h2 class="card-heading">Embedded C</h2>
                                         </div>
                                     </div>
-                                    <div class="card-text-2-lines">Webflow is a user-friendly and intuitive website builder that makes creating pages easy even for those who don’t write code. Forget about developers and let your creativity flow.</div>
+                                    <div class="card-text-2-lines">Specialized version of C used for programming microcontrollers and embedded systems.</div>
                                 </div>
                                 <div class="card-meta">
                                     <div class="card-info">
+                                        <div class="card-tag">Embedded</div>
+                                        <div class="card-tag">Programming</div>
+                                        <div class="card-tag">EEE</div>
+                                    </div>
+                                    <div class="card-cta">
+                                        <div class="icon-svg w-embed"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+</svg></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a style="background-color:rgb(28,28,28)" href="https://www.keil.com/" target="_blank" class="card w-inline-block">
+                            <div class="shine-wrap">
+                                <div class="shine"></div>
+                            </div>
+                            <div class="card-content-vertical">
+                                <div class="tools">
+                                    <div class="tools-head">
+                                        <div class="tools-icon">
+                                            <div class="tool-logo"><img src="https://i.imgur.com/GVkuGv8.png" alt="Keil Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;"></div>
+                                            <div class="app-outline"></div>
+                                        </div>
+                                        <div>
+                                            <h2 class="card-heading">Keil</h2>
+                                        </div>
+                                    </div>
+                                    <div class="card-text-2-lines">Microcontroller development kit and IDE for developing embedded applications.</div>
+                                </div>
+                                <div class="card-meta">
+                                    <div class="card-info">
+                                        <div class="card-tag">Embedded</div>
+                                        <div class="card-tag">IDE</div>
+                                        <div class="card-tag">EEE</div>
+                                    </div>
+                                    <div class="card-cta">
+                                        <div class="icon-svg w-embed"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+</svg></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a style="background-color:rgb(28,28,28)" href="https://www.microchip.com/mplab/" target="_blank" class="card w-inline-block">
+                            <div class="shine-wrap">
+                                <div class="shine"></div>
+                            </div>
+                            <div class="card-content-vertical">
+                                <div class="tools">
+                                    <div class="tools-head">
+                                        <div class="tools-icon">
+                                            <div class="tool-logo"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/93/MPLAB8X_Splash.png/250px-MPLAB8X_Splash.png" alt="MPLAB Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;"></div>
+                                            <div class="app-outline"></div>
+                                        </div>
+                                        <div>
+                                            <h2 class="card-heading">MPLAB</h2>
+                                        </div>
+                                    </div>
+                                    <div class="card-text-2-lines">Development environment for Microchip microcontrollers.</div>
+                                </div>
+                                <div class="card-meta">
+                                    <div class="card-info">
+                                        <div class="card-tag">Embedded</div>
+                                        <div class="card-tag">IDE</div>
+                                        <div class="card-tag">EEE</div>
+                                    </div>
+                                    <div class="card-cta">
+                                        <div class="icon-svg w-embed"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+</svg></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a style="background-color:rgb(28,28,28)" href="https://www.labcenter.com/" target="_blank" class="card w-inline-block">
+                            <div class="shine-wrap">
+                                <div class="shine"></div>
+                            </div>
+                            <div class="card-content-vertical">
+                                <div class="tools">
+                                    <div class="tools-head">
+                                        <div class="tools-icon">
+                                            <div class="tool-logo"><img src="https://i.imgur.com/UH8iycK.png" alt="Proteus Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;"></div>
+                                            <div class="app-outline"></div>
+                                        </div>
+                                        <div>
+                                            <h2 class="card-heading">Proteus</h2>
+                                        </div>
+                                    </div>
+                                    <div class="card-text-2-lines">Software suite used for circuit simulation and PCB design.</div>
+                                </div>
+                                <div class="card-meta">
+                                    <div class="card-info">
+                                        <div class="card-tag">Engineering</div>
+                                        <div class="card-tag">Simulation</div>
                                         <div class="card-tag">Design</div>
-                                        <div class="card-tag">No Code</div>
-                                        <div class="card-tag">Website Builder</div>
-                                    </div>
-                                    <div class="card-cta">
-                                        <div class="icon-svg w-embed"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-</svg></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a style="background-color:rgb(28,28,28)" href="https://zapier.com/app/login" target="_blank" class="card w-inline-block">
-                            <div class="shine-wrap">
-                                <div class="shine"></div>
-                            </div>
-                            <div class="card-content-vertical">
-                                <div class="tools">
-                                    <div class="tools-head">
-                                        <div class="tools-icon white"><img src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a1a_free-zapier-282557.webp" loading="lazy" alt="" class="image-background" />
-                                            <div class="app-outline"></div>
-                                        </div>
-                                        <div>
-                                            <h2 class="card-heading">Zapier</h2>
-                                        </div>
-                                    </div>
-                                    <div class="card-text-2-lines">Whether you need to automate a simple task or build an entire automated system, you can do it all on Zapier.</div>
-                                </div>
-                                <div class="card-meta">
-                                    <div class="card-info">
-                                        <div class="card-tag">API</div>
-                                        <div class="card-tag">No Code</div>
-                                        <div class="card-tag">Tool</div>
-                                    </div>
-                                    <div class="card-cta">
-                                        <div class="icon-svg w-embed"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-</svg></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a style="background-color:rgb(28,28,28)" href="https://www.relume.io/" target="_blank" class="card w-inline-block">
-                            <div class="shine-wrap">
-                                <div class="shine"></div>
-                            </div>
-                            <div class="card-content-vertical">
-                                <div class="tools">
-                                    <div class="tools-head">
-                                        <div class="tools-icon"><img src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a18_6215a634e4608d158cb2ce4b_relume-styleguide.png" loading="lazy" alt="" class="image-background" />
-                                            <div class="app-outline"></div>
-                                        </div>
-                                        <div>
-                                            <h2 class="card-heading">Relume</h2>
-                                        </div>
-                                    </div>
-                                    <div class="card-text-2-lines">Site Builder utilizes a built-in design system and component library of 1000+ components made for Figma &amp; Webflow.</div>
-                                </div>
-                                <div class="card-meta">
-                                    <div class="card-info">
-                                        <div class="card-tag">Design</div>
-                                        <div class="card-tag">Prototype</div>
-                                        <div class="card-tag">Feedback</div>
-                                    </div>
-                                    <div class="card-cta">
-                                        <div class="icon-svg w-embed"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-</svg></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a style="background-color:rgb(28,28,28)" href="https://finsweet.com/client-first" target="_blank" class="card w-inline-block">
-                            <div class="shine-wrap">
-                                <div class="shine"></div>
-                            </div>
-                            <div class="card-content-vertical">
-                                <div class="tools">
-                                    <div class="tools-head">
-                                        <div class="tools-icon"><img src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a17_w_WoAzXY_400x400.jpg" loading="lazy" alt="" class="image-background" />
-                                            <div class="app-outline"></div>
-                                        </div>
-                                        <div>
-                                            <h2 class="card-heading">Client-First </h2>
-                                        </div>
-                                    </div>
-                                    <div class="card-text-2-lines">Client-First is a set of guidelines and strategies to help us build Webflow websites. Built and managed by Finsweet.</div>
-                                </div>
-                                <div class="card-meta">
-                                    <div class="card-info">
-                                        <div class="card-tag">No Code</div>
-                                        <div class="card-tag">Collaboration</div>
-                                        <div class="card-tag">Feedback</div>
                                     </div>
                                     <div class="card-cta">
                                         <div class="icon-svg w-embed"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -502,32 +545,32 @@
                 <div class="section-block">
                     <div class="content-title-wrap">
                         <div class="content-title-dot"></div>
-                        <h2 class="content-title">Collaboration.</h2>
-                        <div class="content-title is-text">Keep everyone in sync</div>
+                        <h2 class="content-title">Design, Simulation, & OS.</h2>
+                        <div class="content-title is-text">Design tools, simulation software, and operating systems</div>
                     </div>
                     <div class="w-layout-grid _2x-column">
-                        <a style="background-color:rgb(28,28,28)" href="https://www.notion.co/" target="_blank" class="card w-inline-block">
+                        <a style="background-color:rgb(28,28,28)" href="https://www.autodesk.com/products/autocad" target="_blank" class="card w-inline-block">
                             <div class="shine-wrap">
                                 <div class="shine"></div>
                             </div>
                             <div class="card-content-vertical">
                                 <div class="tools">
                                     <div class="tools-head">
-                                        <div class="tools-icon"><img src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a46_icon-notion.webp" loading="lazy" sizes="(max-width: 512px) 100vw, 512px" srcset="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a46_icon-notion-p-500.webp 500w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a46_icon-notion.webp 512w"
-                                                alt="" class="image-background" />
+                                        <div class="tools-icon">
+                                            <div class="tool-logo"><img src="https://images.seeklogo.com/logo-png/48/2/autocad-logo-png_seeklogo-482394.png" alt="AutoCAD Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;"></div>
                                             <div class="app-outline"></div>
                                         </div>
                                         <div>
-                                            <h2 class="card-heading">Notion</h2>
+                                            <h2 class="card-heading">AutoCAD</h2>
                                         </div>
                                     </div>
-                                    <div class="card-text-2-lines">A new tool that blends your everyday work apps into one. It&#x27;s the all-in-one workspace for you and your team.</div>
+                                    <div class="card-text-2-lines">Software for 2D and 3D computer-aided design and drafting.</div>
                                 </div>
                                 <div class="card-meta">
                                     <div class="card-info">
-                                        <div class="card-tag">No Code</div>
-                                        <div class="card-tag">Collaboration</div>
-                                        <div class="card-tag">Feedback</div>
+                                        <div class="card-tag">Design</div>
+                                        <div class="card-tag">Engineering</div>
+                                        <div class="card-tag">CAD</div>
                                     </div>
                                     <div class="card-cta">
                                         <div class="icon-svg w-embed"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -537,28 +580,27 @@
                                 </div>
                             </div>
                         </a>
-                        <a style="background-color:rgb(28,28,28)" href="https://www.loom.com/" target="_blank" class="card w-inline-block">
+                        <a style="background-color:rgb(28,28,28)" href="https://www.mathworks.com/products/matlab.html" target="_blank" class="card w-inline-block">
                             <div class="shine-wrap">
                                 <div class="shine"></div>
                             </div>
                             <div class="card-content-vertical">
                                 <div class="tools">
                                     <div class="tools-head">
-                                        <div class="tools-icon"><img src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a4e_icon-loom.webp" loading="lazy" sizes="(max-width: 512px) 100vw, 512px" srcset="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a4e_icon-loom-p-500.webp 500w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a4e_icon-loom.webp 512w"
-                                                alt="" class="image-background" />
+                                        <div class="tools-icon">
+                                            <div class="tool-logo"><img src="https://i.imgur.com/crK7eAU.png" alt="MATLAB Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;"></div>
                                             <div class="app-outline"></div>
                                         </div>
                                         <div>
-                                            <h2 class="card-heading">Loom</h2>
+                                            <h2 class="card-heading">MATLAB</h2>
                                         </div>
                                     </div>
-                                    <div class="card-text-2-lines">Best free online screen recording tool with advanced video editing and video storage.</div>
+                                    <div class="card-text-2-lines">Language for technical computing, modeling, and algorithm development.</div>
                                 </div>
                                 <div class="card-meta">
                                     <div class="card-info">
-                                        <div class="card-tag">Collaboration</div>
-                                        <div class="card-tag">Video</div>
-                                        <div class="card-tag">Feedback</div>
+                                        <div class="card-tag">Engineering</div>
+                                        <div class="card-tag">Simulation</div>
                                     </div>
                                     <div class="card-cta">
                                         <div class="icon-svg w-embed"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -568,27 +610,27 @@
                                 </div>
                             </div>
                         </a>
-                        <a style="background-color:rgb(28,28,28)" href="https://www.slack.com/" target="_blank" class="card w-inline-block">
+                        <a style="background-color:rgb(28,28,28)" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="card w-inline-block">
                             <div class="shine-wrap">
                                 <div class="shine"></div>
                             </div>
                             <div class="card-content-vertical">
                                 <div class="tools">
                                     <div class="tools-head">
-                                        <div class="tools-icon"><img src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a47_icon-slack.webp" loading="lazy" sizes="(max-width: 512px) 100vw, 512px" srcset="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a47_icon-slack-p-500.webp 500w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a47_icon-slack.webp 512w"
-                                                alt="" class="image-background" />
+                                        <div class="tools-icon">
+                                            <div class="tool-logo"><img src="https://i.imgur.com/k8xuyg5.png" alt="HTML Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;"></div>
                                             <div class="app-outline"></div>
                                         </div>
                                         <div>
-                                            <h2 class="card-heading">Slack</h2>
+                                            <h2 class="card-heading">HTML</h2>
                                         </div>
                                     </div>
-                                    <div class="card-text-2-lines">Slack is a new way to communicate with your team. It&#x27;s faster, better organized, and more secure than email.</div>
+                                    <div class="card-text-2-lines">Markup language that forms the structure and content of web pages.</div>
                                 </div>
                                 <div class="card-meta">
                                     <div class="card-info">
-                                        <div class="card-tag">Collaboration</div>
-                                        <div class="card-tag">Feedback</div>
+                                        <div class="card-tag">Programming</div>
+                                        <div class="card-tag">Web</div>
                                     </div>
                                     <div class="card-cta">
                                         <div class="icon-svg w-embed"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -598,27 +640,27 @@
                                 </div>
                             </div>
                         </a>
-                        <a style="background-color:rgb(28,28,28)" href="https://www.screenpresso.com/" target="_blank" class="card w-inline-block">
+                        <a style="background-color:rgb(28,28,28)" href="https://www.linuxfoundation.org/" target="_blank" class="card w-inline-block">
                             <div class="shine-wrap">
                                 <div class="shine"></div>
                             </div>
                             <div class="card-content-vertical">
                                 <div class="tools">
                                     <div class="tools-head">
-                                        <div class="tools-icon"><img src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a0c_icon-screenpresso.svg" loading="lazy" alt="" class="image-background" />
+                                        <div class="tools-icon">
+                                            <div class="tool-logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAx6camOf_G96Zcs2Zj34Yjmy0ysPd-p0oJQ&s" alt="Linux Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;"></div>
                                             <div class="app-outline"></div>
                                         </div>
                                         <div>
-                                            <h2 class="card-heading">Screenpresso</h2>
+                                            <h2 class="card-heading">Basics of Linux</h2>
                                         </div>
                                     </div>
-                                    <div class="card-text-2-lines">Screenpresso is a NEW Light-weight screen grab tool with built-in image editor, user guide generator and sharing options.</div>
+                                    <div class="card-text-2-lines">Foundational knowledge of the Linux operating system for development and administration.</div>
                                 </div>
                                 <div class="card-meta">
                                     <div class="card-info">
-                                        <div class="card-tag">Video</div>
-                                        <div class="card-tag">Collaboration</div>
-                                        <div class="card-tag">Feedback</div>
+                                        <div class="card-tag">OS</div>
+                                        <div class="card-tag">Development</div>
                                     </div>
                                     <div class="card-cta">
                                         <div class="icon-svg w-embed"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -638,8 +680,8 @@
                             <li><a href="https://www.linkedin.com/in/chinthan-a-d-30396b390" target="_blank" class="button w-button">LinkedIn</a></li>
                         </ul>
                         <div class="footer-meta-info">
-                        <div>© 2025 CHINTHAN A D. All rights reserved.</div>
-                    </div>
+                            <div>© 2025 CHINTHAN A D. All rights reserved.</div>
+                        </div>
                     </div>
                 </div>
             </div>

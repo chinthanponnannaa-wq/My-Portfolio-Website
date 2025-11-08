@@ -81,27 +81,68 @@
         }
     </style>
 
+    <!-- CLEAN MODULE SCRIPT (GSAP + SplitType) — same exact effect as index/contact -->
     <script type="module">
-        import gsap from "https://cdn.skypack.dev/gsap"; import SplitType from "https://cdn.skypack.dev/split-type"; document.addEventListener("DOMContentLoaded", () => { // Create the gsap.matchMedia() instance let mm = gsap.matchMedia(); // Add a media query
-        that targets screens with a minimum width of 992px mm.add("(min-width: 992px)", () => { const fontWeightItems = document.querySelectorAll( '[data-animate="font-weight"]' ); const MAX_DISTANCE = 300; // Adjust the maximum distance for font weight
-        change as needed const MAX_FONT_WEIGHT = 800; // Maximum font weight const MIN_FONT_WEIGHT = 100; // Minimum font weight // Split up any text with the data attribute into individual characters fontWeightItems.forEach((item) => { new SplitType(item,
-        { types: "chars" }).chars; }); // Add mousemove event listener to change font weight based on mouse position document.addEventListener("mousemove", (event) => { // Get the mouse position const mouseX = event.pageX; const mouseY = event.pageY;
-        fontWeightItems.forEach((item) => { item.querySelectorAll(".char").forEach((char) => { // Get the center of each character and calculate the distance from the mouse const itemRect = char.getBoundingClientRect(); const itemCenterX = itemRect.left
-        + itemRect.width / 2 + window.scrollX; const itemCenterY = itemRect.top + itemRect.height / 2 + window.scrollY; const distance = Math.sqrt( Math.pow(mouseX - itemCenterX, 2) + Math.pow(mouseY - itemCenterY, 2) ); // map the distance to the font
-        weight range let fontWeight = distance
-        < MAX_DISTANCE ? gsap.utils.mapRange( 0, MAX_DISTANCE, MIN_FONT_WEIGHT, MAX_FONT_WEIGHT, Math.max(0, MAX_DISTANCE - distance) ) : MIN_FONT_WEIGHT; gsap.to(char, { fontWeight, duration: 0.5 }); });
-            }); }); }); }); </script>
-            <script type="text/javascript">
-                window.__WEBFLOW_CURRENCY_SETTINGS = {
-                    "currencyCode": "USD",
-                    "symbol": "$",
-                    "decimal": ".",
-                    "fractionDigits": 2,
-                    "group": ",",
-                    "template": "{{wf {\"path\":\"symbol\",\"type\":\"PlainText\"} }} {{wf {\"path\":\"amount\",\"type\":\"CommercePrice\"} }} {{wf {\"path\":\"currencyCode\",\"type\":\"PlainText\"} }}",
-                    "hideDecimalForWholeNumbers": false
-                };
-            </script>
+        import gsap from "https://cdn.skypack.dev/gsap";
+        import SplitType from "https://cdn.skypack.dev/split-type";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Create the gsap.matchMedia() instance
+            let mm = gsap.matchMedia();
+
+            // Add a media query that targets screens with a minimum width of 992px
+            mm.add("(min-width: 992px)", () => {
+                const fontWeightItems = document.querySelectorAll('[data-animate="font-weight"]');
+                const MAX_DISTANCE = 300; // Adjust the maximum distance for font weight change as needed
+                const MAX_FONT_WEIGHT = 800; // Maximum font weight
+                const MIN_FONT_WEIGHT = 100; // Minimum font weight
+
+                // Split up any text with the data attribute into individual characters
+                fontWeightItems.forEach((item) => {
+                    new SplitType(item, { types: "chars" });
+                });
+
+                // Add mousemove event listener to change font weight based on mouse position
+                document.addEventListener("mousemove", (event) => {
+                    // Get the mouse position
+                    const mouseX = event.pageX;
+                    const mouseY = event.pageY;
+
+                    fontWeightItems.forEach((item) => {
+                        item.querySelectorAll(".char").forEach((char) => {
+                            // Get the center of each character and calculate the distance from the mouse
+                            const itemRect = char.getBoundingClientRect();
+                            const itemCenterX = itemRect.left + itemRect.width / 2 + window.scrollX;
+                            const itemCenterY = itemRect.top + itemRect.height / 2 + window.scrollY;
+                            const distance = Math.sqrt(
+                                Math.pow(mouseX - itemCenterX, 2) + Math.pow(mouseY - itemCenterY, 2)
+                            );
+
+                            // Map the distance to the font weight range
+                            let fontWeight = distance < MAX_DISTANCE ? 
+                                gsap.utils.mapRange(0, MAX_DISTANCE, MIN_FONT_WEIGHT, MAX_FONT_WEIGHT, Math.max(0, MAX_DISTANCE - distance)) : 
+                                MIN_FONT_WEIGHT;
+
+                            gsap.to(char, { fontWeight, duration: 0.5 });
+                        });
+                    });
+                });
+            });
+        });
+    </script>
+    <!-- END MODULE SCRIPT -->
+
+    <script type="text/javascript">
+        window.__WEBFLOW_CURRENCY_SETTINGS = {
+            "currencyCode": "USD",
+            "symbol": "$",
+            "decimal": ".",
+            "fractionDigits": 2,
+            "group": ",",
+            "template": "{{wf {\"path\":\"symbol\",\"type\":\"PlainText\"} }} {{wf {\"path\":\"amount\",\"type\":\"CommercePrice\"} }} {{wf {\"path\":\"currencyCode\",\"type\":\"PlainText\"} }}",
+            "hideDecimalForWholeNumbers": false
+        };
+    </script>
 </head>
 
 <body>
@@ -237,6 +278,7 @@
             <div class="container">
                 <div class="container-small align-left hero">
                     <div class="hero-block">
+                        <!-- heading already has data-animate - effect will now be identical -->
                         <h1 data-animate="font-weight" class="hero-heading">A little bit about me</h1>
                         <div class="content-block">
                             <div>I&#x27;m an Electrical and Electronics Engineering student passionate about technology and innovation. My expertise spans Python programming, SQL databases, embedded systems, and data visualization.<br/><br/>I&#x27;ve worked on exciting projects including a high-speed Li-Fi communication system and healthcare data-driven safety applications. My technical foundation allows me to approach web development with a unique engineering perspective, combining analytical problem-solving with creative design implementation.<br/><br/>I&#x27;m currently seeking opportunities to apply my technical skills in real-world applications and continue growing as both an engineer and developer.</div>
@@ -344,7 +386,7 @@
                             </div>
                             <div class="accordion-bottom">
                                 <div class="accordion-bottom-wrap">
-                                    <div>Totally! It&#x27;s important to me to have a cohesive experience across all screen sizes.But the desktop/laptop view includes enhanced features and design elements.</div>
+                                    <div>Totally! It&#x27;s important to me to have a cohesive experience across all screen sizes. But the desktop/laptop view includes enhanced features and design elements.</div>
                                 </div>
                             </div>
                         </div>
@@ -359,9 +401,7 @@
                         </div>
                         <div id="w-node-_092c14f9-f4ab-5818-6798-ab8a01b2f68a-1a4c79d7">
                             <div class="pricing-heading">30$/h</div>
-                            <div>This price reflects the time, effort, and expertise I put into creating and designing websites using Webflow. I ensure that your website not only looks great but also functions smoothly. <br/><br/>With this rate, you&#x27;re
-                                not just paying for the hours I work, but also for the knowledge and skills I bring to make your website stand out and work seamlessly. <br/><br/>It&#x27;s an investment in a quality, customized web solution tailored to
-                                your needs.<br/><br/></div>
+                            <div>This price reflects the time, effort, and expertise I put into creating and designing websites using Webflow. I ensure that your website not only looks great but also functions smoothly. <br/><br/>With this rate, I ensure quality, customized solutions.<br/><br/></div>
                         </div>
                     </div>
                 </div>
